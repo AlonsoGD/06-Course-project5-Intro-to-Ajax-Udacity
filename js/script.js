@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 
 
-        var nytUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+        var nytUrl = 'https://23123api.nytimes.com/svc/search/v2/articlesearch.json';
         nytUrl = nytUrl + '?' + $.param({
             'api-key': '027ce0de69ca4bb38a3a6192d9ea78ac',
             'q': cityStr,
@@ -43,11 +43,15 @@ $(document).ready(function() {
                     $nytElem.append('<li class="list-group-item article"><a target="_blank" href="' + allArticles[i].web_url + '">' + allArticles[i].headline.main + '</a><p>' + allArticles[i].snippet + '</p></li>');
                 };
             }
-            // $.each(allArticles, function(index, web_url) {
-            //     console.log(web_url);
-            // });
+
+        }).fail(function() {
+            $nytHeaderElem.addClass('alert alert-danger');
+            $nytHeaderElem.text('New York Times Articles Could Not Be Loaded');
         });
 
+        // $.each(allArticles, function(index, web_url) {
+            //     console.log(web_url);
+            // });
         return false;
     };
 
