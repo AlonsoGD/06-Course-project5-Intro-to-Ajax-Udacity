@@ -20,19 +20,13 @@
 <body class="container">
     <div class="row">
         <form id="form-container" class="form-container form-inline">
-            <div class="col-md-8">
-                <label for="street">Street: </label>
-                <input class="form-control" type="text" id="street" value="Gray Avenue">
-                <label for="city">City: </label>
-                <input class="form-control" type="text" id="city" value="Toronto">
-            </div>
-            <div class="col-md-1">
-                <button id="submit-btn" class="btn btn-primary">Submit</button>
-            </div> 
+            <label for="street">Street: </label>
+            <input class="form-control" type="text" id="street" value="Gray Avenue">
+            <label for="city">City: </label>
+            <input class="form-control m-2" type="text" id="city" value="Toronto">
+            <button id="submit-btn" class="btn btn-primary mt-2">Submit</button>
         </form>
     </div>
-
-    <hr>
 
     <div class="row">
         <h2 id="greeting" class="greeting text-center">Where do you want to live?</h2>
@@ -50,7 +44,7 @@
         <div class="col-md-4">
             <div class="wikipedia-container">
                 <h3 id="wikipedia-header">Relevant Wikipedia Links</h3>
-                <ul id="wikipedia-links list-group">Type in an address above and find relevant Wikipedia articles here!</ul>
+                <ul id="wikipedia-links" class="list-group">Type in an address above and find relevant Wikipedia articles here!</ul>
             </div>
         </div>
     </div>
