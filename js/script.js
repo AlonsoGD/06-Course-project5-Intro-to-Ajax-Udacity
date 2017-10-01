@@ -20,7 +20,8 @@ $(document).ready(function() {
         // YOUR CODE GOES HERE!
         $greeting.text('So, you want to live at ' + streetStr + ', ' + cityStr + '?');
 
-        $body.append('<img class="bgimg" src="' + bgImgUrl + '">');
+        //$body.append('<img class="bgimg" src="' + bgImgUrl + '">');
+        $body.css('background-image', 'url("' + bgImgUrl + '")');
 
 
 
@@ -39,7 +40,7 @@ $(document).ready(function() {
             for (var i = 0; i < allArticles.length; i++) {
                 documentType = allArticles[i].document_type
                 if (documentType === 'article') {                  
-                    $nytElem.append('<li class="article"><a target="_blank" href="' + allArticles[i].web_url + '">' + allArticles[i].headline.main + '</a><p>' + allArticles[i].snippet + '</p></li>');
+                    $nytElem.append('<li class="list-group-item article"><a target="_blank" href="' + allArticles[i].web_url + '">' + allArticles[i].headline.main + '</a><p>' + allArticles[i].snippet + '</p></li>');
                 };
             }
             // $.each(allArticles, function(index, web_url) {
