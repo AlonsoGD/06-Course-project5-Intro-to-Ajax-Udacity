@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 
 
-        var nytUrl = 'https://23123api.nytimes.com/svc/search/v2/articlesearch.json';
+        var nytUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
         nytUrl = nytUrl + '?' + $.param({
             'api-key': '027ce0de69ca4bb38a3a6192d9ea78ac',
             'q': cityStr,
