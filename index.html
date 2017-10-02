@@ -17,36 +17,42 @@
     <script src="js/script.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="container">
-    <div class="row">
-        <form id="form-container" class="form-container form-inline">
-            <label for="street">Street: </label>
-            <input class="form-control" type="text" id="street" value="Gray Avenue">
-            <label for="city">City: </label>
-            <input class="form-control m-2" type="text" id="city" value="Toronto">
-            <button id="submit-btn" class="btn btn-primary mt-2">Submit</button>
-        </form>
-    </div>
+<body>
+    <main class="container">
+        <div class="row">
+            <form id="form-container" class="form-container form-inline">
+                <label for="street">Street: </label>
+                <input class="form-control" type="text" id="street" value="Gray Avenue">
+                <label for="city">City: </label>
+                <input class="form-control m-2" type="text" id="city" value="Toronto">
+                <button id="submit-btn" class="btn btn-primary mt-2">Submit</button>
+            </form>
+        </div>
 
-    <div class="row">
-        <h2 id="greeting" class="greeting text-center">Where do you want to live?</h2>
-    </div>
+        <div class="row">
+            <h2 id="greeting" class="greeting text-center">Where do you want to live?</h2>
+        </div>
 
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="nytimes-container">
-                <h3 id="nytimes-header">New York Times Articles</h3>
-                <ul id="nytimes-articles" class="article-list list-group">What's going on in your new city? Enter an address and hit submit and the NY Times will tell you here!</ul>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="nytimes-container">
+                    <h3 id="nytimes-header">New York Times Articles</h3>
+                    <ul id="nytimes-articles" class="article-list list-group">What's going on in your new city? Enter an address and hit submit and the NY Times will tell you here!</ul>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="wikipedia-container">
+                    <h3 id="wikipedia-header">Relevant Wikipedia Links</h3>
+                    <ul id="wikipedia-links" class="list-group">Type in an address above and find relevant Wikipedia articles here!</ul>
+                </div>
             </div>
         </div>
-        
-        <div class="col-md-4">
-            <div class="wikipedia-container">
-                <h3 id="wikipedia-header">Relevant Wikipedia Links</h3>
-                <ul id="wikipedia-links" class="list-group">Type in an address above and find relevant Wikipedia articles here!</ul>
-            </div>
-        </div>
-    </div>
+    </main>
+    <footer>
+        <a class="footerlinks" target="_blank" href="mailito:dani.alonso.garcia@gmail.com"> <i class="fa fa-envelope fa-2x iconStyle" aria-hidden="true"></i></a>
+        <a class="footerlinks" target="_blank" href="https://github.com/AlonsoGD/06-Course-project5-Intro-to-Ajax-Udacity"> <i class="fa fa-github fa-2x iconStyle" aria-hidden="true"></i></a>
+    </footer>
 </body>
 </html>
