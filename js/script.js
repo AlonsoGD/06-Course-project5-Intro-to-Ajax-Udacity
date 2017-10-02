@@ -2,6 +2,7 @@ $(document).ready(function() {
     function loadData() {
 
         var $body = $('body');
+        var $footer = $('footer');
         var $wikiElem = $('#wikipedia-links');
         var $nytHeaderElem = $('#nytimes-header');
         var $nytElem = $('#nytimes-articles');
@@ -17,11 +18,15 @@ $(document).ready(function() {
         $wikiElem.text("");
         $nytElem.text("");
         
-        // load streetview    
-        $body.css('background-image', 'url("' + bgImgUrl + '")');
-        
+        // Google streetview image background 
+        $body.css('background-image', 'url("' + bgImgUrl + '")'); 
         $greeting.text('So, you want to live at ' + streetStr + ', ' + cityStr + '?');
+        
+        //Loading icons while waiting for the resquest resonse
+        $wikiElem.html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><span class=""> Loading...</span>');
+        $nytHeaderElem.html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><span class=""> Loading...</span>');
 
+        //NYT API request for the articles with the location keyword
         $.getJSON(nytUrl, 
             {
             'api-key': '027ce0de69ca4bb38a3a6192d9ea78ac',
@@ -30,6 +35,7 @@ $(document).ready(function() {
             'sort': 'newest'
             },            
             function(data) {
+                $nytHeaderElem.html(""); //removes the loading icon
                 $nytHeaderElem.text('New York Times Articles About ' + cityStr);
                 var allArticles = data.response.docs;
                 for (var i = 0; i < allArticles.length; i++) {
@@ -39,11 +45,19 @@ $(document).ready(function() {
                     };
                 }
             }
-        ).fail(function() {
+        //NYT API Error handler
+        ).fail(function() { 
             $nytHeaderElem.addClass('alert alert-danger');
             $nytHeaderElem.text('New York Times Articles Could Not Be Loaded');
         });
 
+        //Wikipedia API error handler
+        var wikipediaRequestTimeout = setTimeout(function() { 
+            $wikiElem.addClass('alert alert-danger');
+            $wikiElem.text("Failed to get Wikipedia resources");
+        }, 4000);
+
+        //Wikipedia API request for articles with the location keyword
         $.ajax({
             method: 'GET',
             url: wikipediaUrl,
@@ -55,11 +69,14 @@ $(document).ready(function() {
                 limit: 20,
             },
             success: function(data) {
+                $wikiElem.html(""); //removes the loading icon
                 var allWikipediaLinks = data[3];
                 var allWikipediaLinksTitles = data[1];
                 for (var i = 0; i < allWikipediaLinks.length; i++) {
                     $wikiElem.append('<li class="list-group-item"><i class="fa fa-caret-right" aria-hidden="true"></i><a target="_blank" href="' + allWikipediaLinks[i] + '"> ' + allWikipediaLinksTitles[i] + '</a>');
-                }
+                };
+            $footer.css('position', 'relative');
+            clearTimeout(wikipediaRequestTimeout);
             }
         });
 
