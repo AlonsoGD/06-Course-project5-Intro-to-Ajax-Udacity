@@ -4,6 +4,7 @@ body {
     background-position: top; 
     background-repeat: no-repeat;
     background-size: 100%;
+    padding-bottom: 75px;
 }
 
 main {
@@ -14,10 +15,6 @@ main {
 }
 
 footer {
-    position: absolute;
-    text-align: right;
-    width: 100%;
-    bottom: 0;
     padding: 10px;
     background-color: #efefef;
     font-size: 12pt; }
@@ -25,7 +22,7 @@ footer {
       padding: 10px;
       color: black;
       font-size: 12pt; }
-
+      
 a {
     color: blue;
 }
