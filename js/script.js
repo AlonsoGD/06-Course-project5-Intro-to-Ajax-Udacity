@@ -1,8 +1,9 @@
 $(document).ready(function() {
+    var $dataToggletTooltip = $('[data-toggle="tooltip"]');
+    
     function loadData() {
 
         var $body = $('body');
-        var $footer = $('footer');
         var $wikiElem = $('#wikipedia-links');
         var $nytHeaderElem = $('#nytimes-header');
         var $nytElem = $('#nytimes-articles');
@@ -24,7 +25,7 @@ $(document).ready(function() {
         
         //Loading icons while waiting for the resquest resonse
         $wikiElem.html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><span class=""> Loading...</span>');
-        $nytHeaderElem.html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><span class=""> Loading...</span>');
+        $nytElem.html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><span class=""> Loading...</span>');
 
         //NYT API request for the articles with the location keyword
         $.getJSON(nytUrl, 
@@ -35,13 +36,13 @@ $(document).ready(function() {
             'sort': 'newest'
             },            
             function(data) {
-                $nytHeaderElem.html(""); //removes the loading icon
+                $nytElem.html(""); //removes the loading icon
                 $nytHeaderElem.text('New York Times Articles About ' + cityStr);
                 var allArticles = data.response.docs;
                 for (var i = 0; i < allArticles.length; i++) {
                     documentType = allArticles[i].document_type
                     if (documentType === 'article') {                  
-                        $nytElem.append('<li class="list-group-item article"><a target="_blank" href="' + allArticles[i].web_url + '">' + allArticles[i].headline.main + '</a><p>' + allArticles[i].snippet + '</p></li>');
+                        $nytElem.hide().append('<li class="list-group-item article"><a target="_blank" href="' + allArticles[i].web_url + '">' + allArticles[i].headline.main + '</a><p>' + allArticles[i].snippet + '</p></li>').slideDown('slow');
                     };
                 }
             }
@@ -73,19 +74,16 @@ $(document).ready(function() {
                 var allWikipediaLinks = data[3];
                 var allWikipediaLinksTitles = data[1];
                 for (var i = 0; i < allWikipediaLinks.length; i++) {
-                    $wikiElem.append('<li class="list-group-item"><i class="fa fa-caret-right" aria-hidden="true"></i><a target="_blank" href="' + allWikipediaLinks[i] + '"> ' + allWikipediaLinksTitles[i] + '</a>');
+                    $wikiElem.hide().append('<li class="list-group-item"><i class="fa fa-caret-right" aria-hidden="true"></i><a target="_blank" href="' + allWikipediaLinks[i] + '"> ' + allWikipediaLinksTitles[i] + '</a>').slideDown('slow');
                 };
-            $footer.css('position', 'relative');
+                
             clearTimeout(wikipediaRequestTimeout);
             }
         });
 
-        // $.each(allArticles, function(index, web_url) {
-            //     console.log(web_url);
-            // });
         return false;
     };
-
-
-$('#form-container').submit(loadData);
+        
+    $('#form-container').submit(loadData);
+    $dataToggletTooltip.tooltip();
 });
