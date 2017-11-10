@@ -13,13 +13,14 @@ $(document).ready(function() {
         var streetStr = $('#street').val();
         var cityStr = $('#city').val();
         var bgImgSize = '1920x1024';
-        var bgImgUrl = 'https://maps.googleapis.com/maps/api/streetview?size=' + bgImgSize + '&location=' + streetStr + ', ' + cityStr;
+        var bgImgUrl = 'https://maps.googleapis.com/maps/api/streetview?key=AIzaSyB7oCHSLMd1iTFZORw2uIFn4x9_OoY7KMU&size=' + bgImgSize + '&location=' + streetStr + ', ' + cityStr;
 
         // clear out old data before new request
         $wikiElem.text("");
         $nytElem.text("");
         
         // Google streetview image background 
+        //$body.append('<img src="' + bgImgUrl + '">');
         $body.css('background-image', 'url("' + bgImgUrl + '")'); 
         $greeting.text('So, you want to live at ' + streetStr + ', ' + cityStr + '?');
         
