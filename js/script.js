@@ -13,7 +13,9 @@ $(document).ready(function() {
         var streetStr = $('#street').val();
         var cityStr = $('#city').val();
         var bgImgSize = '1920x1024';
-        var bgImgUrl = 'https://maps.googleapis.com/maps/api/streetview?key=AIzaSyB7oCHSLMd1iTFZORw2uIFn4x9_OoY7KMU&size=' + bgImgSize + '&location=' + streetStr + ', ' + cityStr;
+        //var googleApiKey = 'AIzaSyC2fXiIK0d8mr0kncekHzSJSDnQMW8sv6Y';
+        
+        //var bgImgUrl = 'https://maps.googleapis.com/maps/api/streetview?key=' + googleApiKey + '&size=' + bgImgSize + '&location=' + streetStr + ', ' + cityStr;
 
         // clear out old data before new request
         $wikiElem.text("");
@@ -21,7 +23,7 @@ $(document).ready(function() {
         
         // Google streetview image background 
         //$body.append('<img src="' + bgImgUrl + '">');
-        $body.css('background-image', 'url("' + bgImgUrl + '")'); 
+        //$body.css('background-image', 'url("' + bgImgUrl + '")'); 
         $greeting.text('So, you want to live at ' + streetStr + ', ' + cityStr + '?');
         
         //Loading icons while waiting for the resquest resonse
@@ -31,7 +33,7 @@ $(document).ready(function() {
         //NYT API request for the articles with the location keyword
         $.getJSON(nytUrl, 
             {
-            'api-key': '027ce0de69ca4bb38a3a6192d9ea78ac',
+            'api-key': 'c6XCqtyiQoxeUbCan4vvWxmmG5poEX7E',
             'q': cityStr,
             'fl': 'web_url,snippet,headline,document_type',
             'sort': 'newest'
